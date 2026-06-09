@@ -1,0 +1,35 @@
+# Dependências
+node_modules/
+
+# Cypress cache
+cypress/screenshots/
+cypress/videos/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Ambiente
+.env
+
+# Build
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+
+# Coverage (se usar testes com cobertura)
+coverage/
+
+# Cypress cache local
+.cypress/
+
+# Arquivos temporários
+*.tmp
