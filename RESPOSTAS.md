@@ -138,7 +138,7 @@
 
 **Severidade: Critical - Financeiro e regra de negócio quebrada**
 
-    //Considerando que clientes poderiam usar isso de má fé, realizando várias compras do produto de forma "gratuita", o que geraria um grande prejuízo para a empresa
+Considerando que clientes poderiam usar isso de má fé, realizando várias compras do produto de forma "gratuita", o que geraria um grande prejuízo para a empresa
 
 ---
 
@@ -148,6 +148,6 @@
 
 **Sugestao de Evidencias**
 
-    Um vídeo reproduzindo o comportamento do bug, realizando todos os passos necessários (desde selecionar o produto até realizar o pagamento), testando todos os meios de pagamento, seja cartão, pix ou boleto, para validar se a compra é de fato realizada com o valor R$0,00 ou no valor correto do produto (pois pode ser apenas um BUG visual no valor mostrado e não o valor real do produto)
+Um vídeo reproduzindo o comportamento do bug, realizando todos os passos necessários (desde selecionar o produto até realizar o pagamento), testando todos os meios de pagamento, seja cartão, pix ou boleto, para validar se a compra é de fato realizada com o valor R$0,00 ou no valor correto do produto (pois pode ser apenas um BUG visual no valor mostrado e não o valor real do produto)
 
 ---
