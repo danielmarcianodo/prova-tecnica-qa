@@ -151,3 +151,52 @@ Considerando que clientes poderiam usar isso de má fé, realizando várias comp
 Um vídeo reproduzindo o comportamento do bug, realizando todos os passos necessários (desde selecionar o produto até realizar o pagamento), testando todos os meios de pagamento, seja cartão, pix ou boleto, para validar se a compra é de fato realizada com o valor R$0,00 ou no valor correto do produto (pois pode ser apenas um BUG visual no valor mostrado e não o valor real do produto)
 
 ---
+
+## Questao 4 - Testes de API e Integração (Conceitual + Prática)
+
+Consiedrando o endpoint
+GET /api/v1/produtos/{id}/estoque?cor={cor}&tamanho={tamanho}
+
+---
+
+**Validacao de Status Code**
+
+200 OK - Sucesso na requisicao
+400 Bad Request - Parametros invalidos(cor/tamanho inexistente ou vaziom)
+404 Not Found - Produto nao existe (o URL incorreta)
+500 Internal Server Error - Erros internos no servidor, inesperado mas deve ser monitorado sempre
+
+---
+
+**Tipos de dados**
+
+Correto:
+    produto_id: int
+    quantidade_disponivel: int
+    cor: string
+    tamanho: string
+
+---
+
+Incorreto:
+    Retornos como 'null' ou string no lugar do número
+
+---
+
+Response de exemplo:
+    {
+        "produto_id": 1,
+        "quantidade_disponivel": 10,
+        "cor": "Preto",
+        "tamanho": "GG"
+    }
+
+---
+
+**Caminhos de exceção**
+
+Produto sem estoque
+Parâmetros inexistentes
+Latência alta da API
+Timeout
+Respostas inconsistentes entre chamadas repetidas
