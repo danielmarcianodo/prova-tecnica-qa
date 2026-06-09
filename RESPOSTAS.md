@@ -102,7 +102,7 @@
 
 **Titulo**
 
-    Issue: Preço da variação "Preto + GG" é exibido como R$ 0,00 no carrinho e permite checkout sem cobrança
+Issue: Preço da variação "Preto + GG" é exibido como R$ 0,00 no carrinho e permite checkout sem cobrança
 
 ---
 
@@ -126,13 +126,13 @@
 
 **Resultado esperado**
 
-    O produto deve manter o valor de R$ 89,90 e a compra deve ser processada com cobrança correta.
+O produto deve manter o valor de R$ 89,90 e a compra deve ser processada com cobrança correta.
 
 ---
 
 **Resultado atual**
 
-    O valor do produto é exibido como R$ 0,00 no carrinho e o checkout é finalizado sem cobrança.
+O valor do produto é exibido como R$ 0,00 no carrinho e o checkout é finalizado sem cobrança.
 
 ---
 
