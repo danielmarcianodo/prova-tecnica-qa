@@ -1,9 +1,13 @@
 # Dependências
 node_modules/
 
-# Cypress cache
+# Cypress (execução e artefatos gerados)
 cypress/screenshots/
 cypress/videos/
+cypress/downloads/
+
+# Cypress cache local
+.cypress/
 
 # Logs
 npm-debug.log*
@@ -14,22 +18,22 @@ yarn-error.log*
 .DS_Store
 Thumbs.db
 
-# Ambiente
+# Ambiente (segredos)
 .env
 
-# Build
+# Build (caso exista futuramente)
 dist/
 build/
 
-# IDE
+# IDEs
 .vscode/
 .idea/
 
-# Coverage (se usar testes com cobertura)
+# Cobertura de testes (se ativar depois)
 coverage/
-
-# Cypress cache local
-.cypress/
 
 # Arquivos temporários
 *.tmp
+
+# Cypress config opcional de cache
+cypress.env.json
