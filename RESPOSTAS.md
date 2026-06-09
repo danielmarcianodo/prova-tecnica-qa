@@ -1,18 +1,19 @@
-## PROVA TECNICA - ANALISTA DE QUALIDADE (QA)
+# PROVA TECNICA - ANALISTA DE QUALIDADE (QA)
 
     DANIEL MARCIANO DE OLIVEIRA
 
 ## Questao 1 - Engenharia de Testes e Analise de Cenarios 
 
-    // Funcionalidade
+// Funcionalidade
 **Feature: Vendas de roupas com grade inteligente**
 
 	Como lojista 
 	Quero vender roupas com diferentes tamanhos e cores
 	Para controlar corretamente o estoque de cada variação
 
+---
 
-    // Cenario 1
+// Cenario 1
 **Scenario: Exibir variações disponíveis do produto**
 
     Given que existe o produto "Camiseta Polo"
@@ -22,7 +23,9 @@
     Then o sistema deve exibir as variações de cor disponíveis
     And o sistema deve exibir as variações de tamanho disponíveis
 
-    // Cenario 2
+---
+
+// Cenario 2
 **Scenario: Adicionar ao carrinho uma variação com estoque disponível**
 
     Given que existe o produto "Camiseta Polo"
@@ -31,7 +34,9 @@
     And adicionar o produto ao carrinho
     Then o produto deve ser adicionado ao carrinho com sucesso
 
-    // Cenario 3
+---
+
+// Cenario 3
 **Scenario: impedir compra de variação sem estoque**
 
 	Given que existe um produto "Camiseta polo"
@@ -41,7 +46,9 @@
 	Then o sistema deve informar que a variação selecionada está indisponível
 	And o produto não deve ser adicionado ao carrinho
 
-    // Cenario 4
+---
+
+// Cenario 4
 **Scenario: permitir compra de outras variaçoes quando uma estiver sem estoque**
 
     Given que existe o produto "Camiseta Polo"
@@ -51,7 +58,9 @@
     And adicionar o produto ao carrinho
     Then o produto deve ser adicionado ao carrinho com sucesso
 
-    // Cenario 5
+---
+
+// Cenario 5
 **Scenario: reduzir estoque após a confirmaçao da venda**
 
     Given que existe o produto "Camiseta Polo"
@@ -60,7 +69,9 @@
     Then a venda deve ser concluída com sucesso
     And o estoque da variaçao "Azul" tamanho "P" deve ser atualizado para 3 unidades
 
-    // Cenario 6
+---
+
+// Cenario 6
 **Scenario: impedir compra de quantidade superior ao estoque disponivel**
 
     Given que existe o produto "Camiseta Polo"
@@ -69,7 +80,9 @@
     Then o sistema deve informar que a quantidade solicitada é maior que o estoque dísponivel
     And a venda nao deve ser concluída
 
-    // Cenario 7
+---
+
+// Cenario 7
 **Scenario: Impedir adição ao carrinho sem selecionar tamanho e cor**
 
     Given que existe o produto "Camiseta Polo"
@@ -77,7 +90,9 @@
     Then o sistema deve informar que a seleção das variações é obrigatória
     And o produto não deve ser adicionado ao carrinho
 
-    // Cenario 8
+---
+
+// Cenario 8
 **Scenario: Bloquear venda quando o estoque for esgotado**
 
     Given que existe o produto "Camiseta Polo"
@@ -88,17 +103,22 @@
     Then o sistema deve informar indisponibilidade de estoque
     And a venda não deve ser concluída
 
+---
+
 ## Questao 2 - Documentaçao e Report de Bug
 
 **Titulo**
+
     Issue: Preço da variação "Preto + GG" é exibido como R$ 0,00 no carrinho e permite checkout sem cobrança
 
 **Ambiente**
+
     - Homologaçao
     - Módulo: E-commerce / Carrinho de compras
 
 
 **Passos para reproduzir**
+
     1. Acessar o produto "Camiseta Polo"
     2. Selecionar a cor "Preto"
     3. Selecionar o tamanho "GG"
@@ -107,15 +127,19 @@
     6. Prosseguir para o checkout
 
 **Resultado esperado**
+
     O produto deve manter o valor de R$ 89,90 e a compra deve ser processada com cobrança correta.
 
 **Resultado atual**
+
     O valor do produto é exibido como R$ 0,00 no carrinho e o checkout é finalizado sem cobrança.
 
 **Severidade: Critical - Financeiro e regra de negócio quebrada**
+
     //Considerando que clientes poderiam usar isso de má fé, realizando várias compras do produto de forma "gratuita", o que geraria um grande prejuízo para a empresa
 
 **Prioridade: Alta / Urgente**
 
 **Sugestao de Evidencias**
+
     Um vídeo reproduzindo o comportamento do bug, realizando todos os passos necessários (desde selecionar o produto até realizar o pagamento), testando todos os meios de pagamento, seja cartão, pix ou boleto, para validar se a compra é de fato realizada com o valor R$0,00 ou no valor correto do produto (pois pode ser apenas um BUG visual no valor mostrado e não o valor real do produto)

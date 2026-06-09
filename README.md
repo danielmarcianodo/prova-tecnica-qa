@@ -1,3 +1,7 @@
+# Prova técnica - Analista de Qualidade (QA)
+
+---
+
 ## Por onde começar?
 
     Para analise das partes conceituais e escritas basta acessar o arquivo com nomde de RESPOSTAS.md
@@ -5,15 +9,11 @@
             Questao 1;
             Questao 2;
 
-
     Caso queira analisar o projeto de automaçao, continue nesse arquivo
         Questoes dessa pasta:
             Questao 3;
 
-
 ---
-
-# Prova técnica - Analista de Qualidade (QA)
 
 ## Questão 3: Automação de Testes de Interface - E2E (Prática)
 
