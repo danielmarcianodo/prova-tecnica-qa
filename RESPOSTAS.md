@@ -1,10 +1,11 @@
 # PROVA TECNICA - ANALISTA DE QUALIDADE (QA)
 
-    DANIEL MARCIANO DE OLIVEIRA
+## DANIEL MARCIANO DE OLIVEIRA
+
+-----
 
 ## Questao 1 - Engenharia de Testes e Analise de Cenarios 
 
-// Funcionalidade
 **Feature: Vendas de roupas com grade inteligente**
 
 	Como lojista 
@@ -13,7 +14,6 @@
 
 ---
 
-// Cenario 1
 **Scenario: Exibir variações disponíveis do produto**
 
     Given que existe o produto "Camiseta Polo"
@@ -25,7 +25,6 @@
 
 ---
 
-// Cenario 2
 **Scenario: Adicionar ao carrinho uma variação com estoque disponível**
 
     Given que existe o produto "Camiseta Polo"
@@ -36,7 +35,6 @@
 
 ---
 
-// Cenario 3
 **Scenario: impedir compra de variação sem estoque**
 
 	Given que existe um produto "Camiseta polo"
@@ -48,7 +46,6 @@
 
 ---
 
-// Cenario 4
 **Scenario: permitir compra de outras variaçoes quando uma estiver sem estoque**
 
     Given que existe o produto "Camiseta Polo"
@@ -60,7 +57,6 @@
 
 ---
 
-// Cenario 5
 **Scenario: reduzir estoque após a confirmaçao da venda**
 
     Given que existe o produto "Camiseta Polo"
@@ -71,7 +67,6 @@
 
 ---
 
-// Cenario 6
 **Scenario: impedir compra de quantidade superior ao estoque disponivel**
 
     Given que existe o produto "Camiseta Polo"
@@ -82,7 +77,6 @@
 
 ---
 
-// Cenario 7
 **Scenario: Impedir adição ao carrinho sem selecionar tamanho e cor**
 
     Given que existe o produto "Camiseta Polo"
@@ -92,7 +86,6 @@
 
 ---
 
-// Cenario 8
 **Scenario: Bloquear venda quando o estoque for esgotado**
 
     Given que existe o produto "Camiseta Polo"
@@ -111,11 +104,14 @@
 
     Issue: Preço da variação "Preto + GG" é exibido como R$ 0,00 no carrinho e permite checkout sem cobrança
 
+---
+
 **Ambiente**
 
     - Homologaçao
     - Módulo: E-commerce / Carrinho de compras
 
+---
 
 **Passos para reproduzir**
 
@@ -126,20 +122,32 @@
     5. Ir para o carrinho
     6. Prosseguir para o checkout
 
+---
+
 **Resultado esperado**
 
     O produto deve manter o valor de R$ 89,90 e a compra deve ser processada com cobrança correta.
+
+---
 
 **Resultado atual**
 
     O valor do produto é exibido como R$ 0,00 no carrinho e o checkout é finalizado sem cobrança.
 
+---
+
 **Severidade: Critical - Financeiro e regra de negócio quebrada**
 
     //Considerando que clientes poderiam usar isso de má fé, realizando várias compras do produto de forma "gratuita", o que geraria um grande prejuízo para a empresa
 
+---
+
 **Prioridade: Alta / Urgente**
+
+---
 
 **Sugestao de Evidencias**
 
     Um vídeo reproduzindo o comportamento do bug, realizando todos os passos necessários (desde selecionar o produto até realizar o pagamento), testando todos os meios de pagamento, seja cartão, pix ou boleto, para validar se a compra é de fato realizada com o valor R$0,00 ou no valor correto do produto (pois pode ser apenas um BUG visual no valor mostrado e não o valor real do produto)
+
+---
