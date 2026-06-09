@@ -45,7 +45,8 @@
 
 ## Execução dos testes
 
-    Abrir Cypress: npx cypress open
+    npx cypress open
+    npx cypress run
 
 ---
 
