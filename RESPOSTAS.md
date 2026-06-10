@@ -92,8 +92,11 @@
 
 ## Questao 2 - Documentaçao e Report de Bug
 
-**Titulo**
+**Titulo:**
 Preço da variação "Preto + GG" é exibido como R$ 0,00 no carrinho e permite checkout sem cobrança
+
+**Resumo do problema:**
+Ao selecionar a 'Camiseta Polo' na cor 'Preto' e tamanho 'GG', o preço unitário do produto no carrinho muda de R$ 89,90 para R$ 0,00. Se o usuário prosseguir para o checkout, ele consegue fechar a compra sem pagar pelo produto. Isso só acontece especificamente na combinação Preto + GG.
 
 
 **Ambiente**
@@ -119,14 +122,14 @@ O valor do produto é exibido como R$ 0,00 no carrinho e o checkout é finalizad
 
 O produto deve manter o valor de R$ 89,90 e a compra deve ser processada com cobrança correta.
 
-**Severidade: Critica - Financeiro e regra de negócio quebrada**
+**Severidade: Critica - Financeiro e regra de negócio quebrada:**
 Considerando que clientes poderiam usar isso de má fé, realizando várias compras do produto de forma "gratuita", o que geraria um grande prejuízo para a empresa
 
 
 **Prioridade: Alta / Urgente**
 
 
-**Sugestao de Evidencias**
+**Sugestao de Evidencias:**
 Um vídeo reproduzindo o comportamento do bug, realizando todos os passos necessários (desde selecionar o produto até realizar o pagamento), testando todos os meios de pagamento, seja cartão, pix ou boleto, para validar se a compra é de fato realizada com o valor R$0,00 ou no valor correto do produto (pois pode ser apenas um BUG visual no valor mostrado e não o valor real do produto)
 
 ---
@@ -227,10 +230,10 @@ Esperado:
 
 ## Questao 6 - Documentação e Reporte de Bug de Integração
 
-**Titulo**
+**Titulo:**
 Webhook de mensagens de áudio e imagem retorna HTTP 500 e interrompe fluxo do agente de IA
 
-**Resumo do problema**
+**Resumo do problema:**
 Ao enviar mensagens do tipo áudio ou imagem via WhatsApp, o webhook da plataforma não consegue processar o payload corretamente e retorna erro HTTP 500, interrompendo completamente o fluxo do cliente no agente de IA
 
 
