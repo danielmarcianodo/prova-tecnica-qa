@@ -93,7 +93,6 @@
 ## Questao 2 - Documentaçao e Report de Bug
 
 **Titulo**
-
 Preço da variação "Preto + GG" é exibido como R$ 0,00 no carrinho e permite checkout sem cobrança
 
 
@@ -121,7 +120,6 @@ O valor do produto é exibido como R$ 0,00 no carrinho e o checkout é finalizad
 O produto deve manter o valor de R$ 89,90 e a compra deve ser processada com cobrança correta.
 
 **Severidade: Critica - Financeiro e regra de negócio quebrada**
-
 Considerando que clientes poderiam usar isso de má fé, realizando várias compras do produto de forma "gratuita", o que geraria um grande prejuízo para a empresa
 
 
@@ -129,7 +127,6 @@ Considerando que clientes poderiam usar isso de má fé, realizando várias comp
 
 
 **Sugestao de Evidencias**
-
 Um vídeo reproduzindo o comportamento do bug, realizando todos os passos necessários (desde selecionar o produto até realizar o pagamento), testando todos os meios de pagamento, seja cartão, pix ou boleto, para validar se a compra é de fato realizada com o valor R$0,00 ou no valor correto do produto (pois pode ser apenas um BUG visual no valor mostrado e não o valor real do produto)
 
 ---
@@ -208,6 +205,7 @@ Validaçoes:
 
 **Cenário de fallback**
 
+
 Entradas de exemplo:
 
     Mensagens aleatórias
@@ -230,12 +228,11 @@ Esperado:
 ## Questao 6 - Documentação e Reporte de Bug de Integração
 
 **Titulo**
-
 Webhook de mensagens de áudio e imagem retorna HTTP 500 e interrompe fluxo do agente de IA
 
 **Resumo do problema**
-
 Ao enviar mensagens do tipo áudio ou imagem via WhatsApp, o webhook da plataforma não consegue processar o payload corretamente e retorna erro HTTP 500, interrompendo completamente o fluxo do cliente no agente de IA
+
 
 **Passos para reproduzir**
 
@@ -263,8 +260,7 @@ Ao enviar mensagens do tipo áudio ou imagem via WhatsApp, o webhook da platafor
 
 **Prioridade: Alta / Urgente**
 
-**Sugestao de Evidencias**
-
+**Sugestao de Evidencias:**
 Necessário anexar os logs do backend no momento do erro, o payload recebido do WhatsApp para mensagens de áudio e imagem, o erro HTTP 500 completo (quando disponível) e evidências do impacto no fluxo, como prints de tela do chatbot travado. Também é importante incluir os dados da requisição e resposta do webhook para facilitar a reprodução e análise da falha
 
 ---
@@ -275,6 +271,7 @@ Necessário anexar os logs do backend no momento do erro, o payload recebido do 
 
 Testes de regressão garantem que alterações no sistema não quebrem funcionalidades que já funcionavam anteriormente
 
+
 **Aplicação no caso da IA**
 
 Ao alterar o “prompt base” da IA para um tom mais formal, podem ocorrer impactos em:
@@ -283,7 +280,8 @@ Ao alterar o “prompt base” da IA para um tom mais formal, podem ocorrer impa
     fluxo de conversa
     salvamento no banco
 
-Aplicação da regressão:
+
+**Aplicação da regressão:**
 
     1. Reexecução de fluxos críticos
         iniciar conversa (“Olá”)
@@ -309,7 +307,7 @@ Aplicação da regressão:
         variações de linguagem
         erros de digitação
 
-Objetivo:
+**Objetivo:**
 
     Garantir que a mudança de linguagem:
         Não quebre o fluxo de negócio
