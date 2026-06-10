@@ -12,7 +12,6 @@
 	Quero vender roupas com diferentes tamanhos e cores
 	Para controlar corretamente o estoque de cada variação
 
----
 
 **Scenario: Exibir variações disponíveis do produto**
 
@@ -23,7 +22,6 @@
     Then o sistema deve exibir as variações de cor disponíveis
     And o sistema deve exibir as variações de tamanho disponíveis
 
----
 
 **Scenario: Adicionar ao carrinho uma variação com estoque disponível**
 
@@ -33,7 +31,6 @@
     And adicionar o produto ao carrinho
     Then o produto deve ser adicionado ao carrinho com sucesso
 
----
 
 **Scenario: impedir compra de variação sem estoque**
 
@@ -44,7 +41,6 @@
 	Then o sistema deve informar que a variação selecionada está indisponível
 	And o produto não deve ser adicionado ao carrinho
 
----
 
 **Scenario: permitir compra de outras variaçoes quando uma estiver sem estoque**
 
@@ -55,7 +51,6 @@
     And adicionar o produto ao carrinho
     Then o produto deve ser adicionado ao carrinho com sucesso
 
----
 
 **Scenario: reduzir estoque após a confirmaçao da venda**
 
@@ -65,7 +60,6 @@
     Then a venda deve ser concluída com sucesso
     And o estoque da variaçao "Azul" tamanho "P" deve ser atualizado para 3 unidades
 
----
 
 **Scenario: impedir compra de quantidade superior ao estoque disponivel**
 
@@ -75,7 +69,6 @@
     Then o sistema deve informar que a quantidade solicitada é maior que o estoque dísponivel
     And a venda nao deve ser concluída
 
----
 
 **Scenario: Impedir adição ao carrinho sem selecionar tamanho e cor**
 
@@ -84,7 +77,6 @@
     Then o sistema deve informar que a seleção das variações é obrigatória
     And o produto não deve ser adicionado ao carrinho
 
----
 
 **Scenario: Bloquear venda quando o estoque for esgotado**
 
@@ -104,14 +96,12 @@
 
 Issue: Preço da variação "Preto + GG" é exibido como R$ 0,00 no carrinho e permite checkout sem cobrança
 
----
 
 **Ambiente**
 
     - Homologaçao
     - Módulo: E-commerce / Carrinho de compras
 
----
 
 **Passos para reproduzir**
 
@@ -122,29 +112,24 @@ Issue: Preço da variação "Preto + GG" é exibido como R$ 0,00 no carrinho e p
     5. Ir para o carrinho
     6. Prosseguir para o checkout
 
----
 
 **Resultado esperado**
 
 O produto deve manter o valor de R$ 89,90 e a compra deve ser processada com cobrança correta.
 
----
 
 **Resultado atual**
 
 O valor do produto é exibido como R$ 0,00 no carrinho e o checkout é finalizado sem cobrança.
 
----
 
 **Severidade: Critical - Financeiro e regra de negócio quebrada**
 
 Considerando que clientes poderiam usar isso de má fé, realizando várias compras do produto de forma "gratuita", o que geraria um grande prejuízo para a empresa
 
----
 
 **Prioridade: Alta / Urgente**
 
----
 
 **Sugestao de Evidencias**
 
@@ -157,46 +142,44 @@ Um vídeo reproduzindo o comportamento do bug, realizando todos os passos necess
 Consiedrando o endpoint
 GET /api/v1/produtos/{id}/estoque?cor={cor}&tamanho={tamanho}
 
----
 
 **Validacao de Status Code**
 
-200 OK - Sucesso na requisicao
-400 Bad Request - Parametros invalidos(cor/tamanho inexistente ou vaziom)
-404 Not Found - Produto nao existe (o URL incorreta)
-500 Internal Server Error - Erros internos no servidor, inesperado mas deve ser monitorado sempre
+    200 OK - Sucesso na requisicao
+    400 Bad Request - Parametros invalidos(cor/tamanho inexistente ou vaziom)
+    404 Not Found - Produto nao existe (o URL incorreta)
+    500 Internal Server Error - Erros internos no servidor, inesperado mas deve ser monitorado sempre
 
----
 
 **Tipos de dados**
 
 Correto:
+
     produto_id: int
     quantidade_disponivel: int
     cor: string
     tamanho: string
 
----
 
 Incorreto:
+
     Retornos como 'null' ou string no lugar do número
 
----
 
 Response de exemplo:
+```json
     {
         "produto_id": 1,
         "quantidade_disponivel": 10,
         "cor": "Preto",
         "tamanho": "GG"
     }
-
----
+```
 
 **Caminhos de exceção**
 
-Produto sem estoque
-Parâmetros inexistentes
-Latência alta da API
-Timeout
-Respostas inconsistentes entre chamadas repetidas
+    Produto sem estoque
+    Parâmetros inexistentes
+    Latência alta da API
+    Timeout
+    Respostas inconsistentes entre chamadas repetidas
