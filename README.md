@@ -4,16 +4,19 @@
 
 ## Por onde começar?
 
-    Para analise das partes conceituais e escritas basta acessar o arquivo com nomde de RESPOSTAS.md
-        Questoes dessa pasta:
+    Para analise das partes conceituais e escritas basta acessar o arquivo RESPOSTAS.md
+        Conteúdos da pasta:
             Questao 1;
             Questao 2;
             Questao 4;
+            Questao 5;
+            Questao 6;
+            Questao 7.
 
     Caso queira analisar o projeto de automaçao, continue nesse arquivo
-        Questoes dessa pasta:
+        Conteúdos da pasta:
             Questao 3;
-            Questao 4;
+            Questao 4.
 
 ---
 
@@ -103,7 +106,7 @@ Como o backend não está disponível, foi utilizada a técnica de mock com cy.i
 
     npx cypress open
     npx cypress run
-    
+
 ---
 
 ## Feito por

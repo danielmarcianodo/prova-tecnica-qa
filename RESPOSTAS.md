@@ -94,7 +94,7 @@
 
 **Titulo**
 
-Issue: Preço da variação "Preto + GG" é exibido como R$ 0,00 no carrinho e permite checkout sem cobrança
+Preço da variação "Preto + GG" é exibido como R$ 0,00 no carrinho e permite checkout sem cobrança
 
 
 **Ambiente**
@@ -112,18 +112,15 @@ Issue: Preço da variação "Preto + GG" é exibido como R$ 0,00 no carrinho e p
     5. Ir para o carrinho
     6. Prosseguir para o checkout
 
+**Resultado atual**
+
+O valor do produto é exibido como R$ 0,00 no carrinho e o checkout é finalizado sem cobrança.
 
 **Resultado esperado**
 
 O produto deve manter o valor de R$ 89,90 e a compra deve ser processada com cobrança correta.
 
-
-**Resultado atual**
-
-O valor do produto é exibido como R$ 0,00 no carrinho e o checkout é finalizado sem cobrança.
-
-
-**Severidade: Critical - Financeiro e regra de negócio quebrada**
+**Severidade: Critica - Financeiro e regra de negócio quebrada**
 
 Considerando que clientes poderiam usar isso de má fé, realizando várias compras do produto de forma "gratuita", o que geraria um grande prejuízo para a empresa
 
@@ -183,3 +180,138 @@ Response de exemplo:
     Latência alta da API
     Timeout
     Respostas inconsistentes entre chamadas repetidas
+
+---
+
+## Questao 5 - Estratégia de Testes para Inteligência Artificial (Conceitual)
+
+**Caminho feliz**
+
+Fluxo de teste:
+
+    Cliente envia saudaçao ("Ola")
+    IA responde solicitando o nome
+    Cliente informa nome
+    IA coleta interesse corretamente
+    Dados sao salvos no sistema
+    Cliente segue a conversa com suas dúvidas
+    IA responde as dúvidas
+    Ciente solicita transferencia a X setor
+    IA direciona cliente ao setor correto
+
+Validaçoes:
+
+    Fluxo completo sem quebra
+    Consistência das intenções
+    Persistência correta dos dados
+    Ordem correta das mensagens
+
+**Cenário de fallback**
+
+Entradas de exemplo:
+
+    Mensagens aleatórias
+    Emojis
+    Mensagens ofensivas
+    Texto vazio
+    Múltiplas mensagens seguidas
+    IA do cliente interagindo com nossa IA (causando conversas sem sentido e repetidas)
+
+Esperado:
+
+    IA não quebrar fluxo
+    IA pedir reescrita da mensagem
+    Fallback para humano ou mensagem padrão
+    Não travar o estado da conversa
+    Possivel identificaçao de outro bot/IA interagindo
+
+---
+
+## Questao 6 - Documentação e Reporte de Bug de Integração
+
+**Titulo**
+
+Webhook de mensagens de áudio e imagem retorna HTTP 500 e interrompe fluxo do agente de IA
+
+**Resumo do problema**
+
+Ao enviar mensagens do tipo áudio ou imagem via WhatsApp, o webhook da plataforma não consegue processar o payload corretamente e retorna erro HTTP 500, interrompendo completamente o fluxo do cliente no agente de IA
+
+**Passos para reproduzir**
+
+    Iniciar conversa com o bot via WhatsApp
+    Enviar mensagem de texto → fluxo funciona corretamente
+    Enviar mensagem de áudio OU imagem
+    Observar resposta do webhook
+
+**Resultado atual**
+
+    Webhook retorna HTTP 500
+    Fluxo do cliente é interrompido
+    Bot não responde mais mensagens seguintes
+    Usuário fica preso no estado atual da conversa
+
+**Resultado esperado**
+
+    Webhook deve processar mídia corretamente
+    Caso não suportado:
+        retornar fallback (ex: 200 OK + aviso)
+        ou ignorar mensagem sem quebrar fluxo
+    Fluxo do agente deve continuar ativo
+
+**Severidade: Critica - Impacta diretamente conversão e atendimento ao cliente**
+
+**Prioridade: Alta / Urgente**
+
+**Sugestao de Evidencias**
+
+Necessário anexar os logs do backend no momento do erro, o payload recebido do WhatsApp para mensagens de áudio e imagem, o erro HTTP 500 completo (quando disponível) e evidências do impacto no fluxo, como prints de tela do chatbot travado. Também é importante incluir os dados da requisição e resposta do webhook para facilitar a reprodução e análise da falha
+
+---
+
+## Questao 7 - Testes de Regressão em Fluxos Dinâmicos (Conceitual)
+
+**O que são Testes de Regressão**
+
+Testes de regressão garantem que alterações no sistema não quebrem funcionalidades que já funcionavam anteriormente
+
+**Aplicação no caso da IA**
+
+Ao alterar o “prompt base” da IA para um tom mais formal, podem ocorrer impactos em:
+    entendimento de intenção
+    coleta de dados do cliente
+    fluxo de conversa
+    salvamento no banco
+
+Aplicação da regressão:
+
+    1. Reexecução de fluxos críticos
+        iniciar conversa (“Olá”)
+        capturar nome do cliente
+        capturar interesse
+        salvar dados
+        encaminhar setor correto
+
+    2. Comparação de comportamento
+        antes vs depois do prompt
+        verificar se a IA ainda:
+            pergunta nome corretamente
+            não pula etapas
+            não muda lógica de fluxo
+
+    3. Testes automatizados
+        scripts simulando conversas completas
+        validação de estado do fluxo
+        validação de dados no banco
+
+    4. Testes exploratórios
+        mensagens fora do padrão
+        variações de linguagem
+        erros de digitação
+
+Objetivo:
+
+    Garantir que a mudança de linguagem:
+        Não quebre o fluxo de negócio
+        Não afete captura de dados
+        Não altere regras funcionais
