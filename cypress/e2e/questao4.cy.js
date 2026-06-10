@@ -1,8 +1,9 @@
+const path = require('path')
+
 describe('API de Estoque de Produto (Mock)', () => {
   it('deve validar retorno de estoque com sucesso', () => {
 
-    // Mock da API
-    cy.intercept('GET', '/api/v1/produtos/1/estoque?cor=Preto&tamanho=GG', {
+    cy.intercept('GET', '**/api/v1/produtos/1/estoque*', {
       statusCode: 200,
       body: {
         produto_id: 1,
@@ -12,17 +13,23 @@ describe('API de Estoque de Produto (Mock)', () => {
       }
     }).as('getEstoque')
 
-    // Request simulada
-    cy.request('/api/v1/produtos/1/estoque?cor=Preto&tamanho=GG')
-      .then((response) => {
+    // Caminho absoluto para o arquivo local
+    cy.visit('cypress/fixtures/blank.html', { failOnStatusCode: false })
 
-        expect(response.status).to.eq(200)
+    cy.window().then((win) => {
+      return win.fetch('/api/v1/produtos/1/estoque?cor=Preto&tamanho=GG')
+        .then((res) => res.json())
+        .then((body) => {
+          expect(body).to.have.property('produto_id', 1)
+          expect(body).to.have.property('cor', 'Preto')
+          expect(body).to.have.property('tamanho', 'GG')
+          expect(body).to.have.property('quantidade_disponivel', 10)
+          expect(body.quantidade_disponivel).to.be.a('number')
+        })
+    })
 
-        expect(response.body).to.have.property('quantidade_disponivel')
-
-        expect(response.body.quantidade_disponivel)
-          .to.be.a('number')
-
-      })
+    cy.wait('@getEstoque').then((interception) => {
+      expect(interception.response.statusCode).to.eq(200)
+    })
   })
 })
